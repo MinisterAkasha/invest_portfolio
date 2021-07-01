@@ -5,8 +5,8 @@ export const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 
 
 const initialState = {
-	name: localStorage.getItem('name'),
-	isAuth: localStorage.getItem('token') || false,
+	name: localStorage.getItem('name') || 'Илья Гусев',
+	isAuth: localStorage.getItem('token') || true,
 }
 
 const authReduser = (state = initialState, action) => {

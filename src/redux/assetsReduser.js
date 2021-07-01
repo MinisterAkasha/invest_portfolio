@@ -40,46 +40,54 @@ const setTotalPrice = (totalPrice) => ({ type: SET_TOTAL_PRICE, totalPrice });
 export const getTotalAssets = () => (dispatch) => {
 	DataAPI.getTotalAssets()
 		.then(res => {
-			dispatch(setTotalAssets(res));
+			dispatch(setTotalAssets(getLocalCategoryData()));
 		})
 }
 
 export const getTotalPrice = () => (dispatch) => {
 	DataAPI.getTotalPrice()
 		.then(res => {
-			dispatch(setTotalPrice(res));
+			dispatch(setTotalPrice(getLocalTotalData()));
 		})
 }
 
 export const updateTotalData = () => (dispatch) => {
-	DataAPI.getTotalPrice()
-		.then(res => {
-			dispatch(setTotalPrice(res));
-		})
-	DataAPI.getTotalAssets()
-		.then(res => {
-			dispatch(setTotalAssets(res));
-		})
-	DataAPI.getTableData()
-		.then(data => {
-			dispatch(setTableData(data))
-		})
-	DataAPI.getDiagrammData()
-		.then(res => {
-			dispatch(setTotalDiagrammData(res.data));
-		})
-	DataAPI.getGraphData()
-		.then(res => {
-			dispatch(setTotalGraphData(graphDataConverter(res.data)));
-		})
-	CategoryApi.getSettedCategory()
-		.then(res => {
-			dispatch(setSettedCategory(res.category));
-		})
-	CategoryApi.getCategories()
-		.then(res => {
-			dispatch(setCategories(res));
-		})
+	// DataAPI.getTotalPrice()
+	// 	.then(res => {
+	// 		dispatch(setTotalPrice(res));
+	// 	})
+	// DataAPI.getTotalAssets()
+	// 	.then(res => {
+	// 		dispatch(setTotalAssets(res));
+	// 	})
+	// DataAPI.getTableData()
+	// 	.then(data => {
+	// 		dispatch(setTableData(data))
+	// 	})
+	// DataAPI.getDiagrammData()
+	// 	.then(res => {
+	// 		dispatch(setTotalDiagrammData(res.data));
+	// 	})
+	// DataAPI.getGraphData()
+	// 	.then(res => {
+	// 		dispatch(setTotalGraphData(graphDataConverter(res.data)));
+	// 	})
+	// CategoryApi.getSettedCategory()
+	// 	.then(res => {
+	// 		dispatch(setSettedCategory(res.category));
+	// 	})
+	// CategoryApi.getCategories()
+	// 	.then(res => {
+	// 		dispatch(setCategories(res));
+	// 	})
+}
+
+const getLocalTotalData = () => {
+	return (678.24);
+}
+
+const getLocalCategoryData = () => {
+	return ['Газ', 'Нефт', 'Авто', 'Недвижимость', 'Рестораны', 'Еда']
 }
 
 export default assetsReduser;

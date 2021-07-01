@@ -35,14 +35,14 @@ export const setSettedCategory = (settedCategory) => ({type: SET_SETTED_CATEGORY
 export const getSettedCategory = () => (dispatch) => {
 	CategoryApi.getSettedCategory()
 		.then(res => {
-			dispatch(setSettedCategory(res.category));
+			dispatch(setSettedCategory(getLocalSettedCategory()));
 		})
 }
 
 export const getCategories = () => (dispatch) => {
 	CategoryApi.getCategories()
 		.then(res => {
-			dispatch(setCategories(res))
+			dispatch(setCategories(getLocalCategoryData()))
 		})
 }
 
@@ -56,6 +56,14 @@ export const createCategory = (data) => () => {
 
 export const setCategory = (category) => () => {
 	return CategoryApi.setCategory(category);
+}
+
+const getLocalSettedCategory = () => {
+	return 'Газ'
+}
+
+const getLocalCategoryData = () => {
+	return ['A', 'B']
 }
 
 export default categoryResuser;

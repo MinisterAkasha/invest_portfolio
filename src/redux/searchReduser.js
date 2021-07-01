@@ -36,10 +36,30 @@ export const getMatchAssets = (text) => (dispatch) => {
 	dispatch(toggleIsFetching(true));
 	return SearchAPI.getMatchAssets(text)
 		.then(res => {
-			dispatch(setMatchAssets(res));
+			dispatch(setMatchAssets(getLocalSearchData()));
 			dispatch(toggleIsFetching(false));
-			return (res);
+			return (getLocalSearchData());
 		})
+}
+
+const getLocalSearchData = () => {
+	return [
+		{
+			ticker: 'B',
+			type: 'акция',
+			name: 'Компания B'
+		},
+		{
+			ticker: 'A',
+			type: 'акция',
+			name: 'Компания A'
+		},
+		{
+			ticker: 'C',
+			type: 'акция',
+			name: 'Компания C'
+		}
+	]
 }
 
 export default searchReduser;

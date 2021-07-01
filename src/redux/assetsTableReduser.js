@@ -116,9 +116,53 @@ export const getTableData = () => (dispatch) => {
 	dispatch(toggleIsFetching(true));
 	DataAPI.getTableData()
 		.then(data => {
-			dispatch(setTableData(data))
+			dispatch(setTableData(getLocalTableData()))
 			dispatch(toggleIsFetching(false));
 		})
+}
+
+const getLocalTableData = () => {
+	return {
+		header: {
+			name: 'Название',
+			ticker: 'Тикер',
+			type: 'Тип',
+			exchange: 'Биржа',
+			price: 'Цена',
+			amount: 'Количество',
+			total: 'Всего'
+		},
+		body: [
+			{
+				name: 'Компания А',
+				ticker: 'А',
+				type: 'акция',
+				exchange: 'NYCE',
+				price: '10',
+				amount: '10',
+				total: '100'
+			},
+			{
+				name: 'Компания В',
+				ticker: 'В',
+				type: 'акция',
+				exchange: 'NYCE',
+				price: '5',
+				amount: '10',
+				total: '50'
+			},
+			{
+				name: 'Компания С',
+				ticker: 'С',
+				type: 'акция',
+				exchange: 'NYCE',
+				price: '2',
+				amount: '10',
+				total: '20'
+			}
+		],
+		order: ['name', 'ticker', 'type', 'exchange', 'price', 'amount', 'total']
+	}
 }
 
 export default assetsTableReduser;
